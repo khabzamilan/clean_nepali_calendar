@@ -22,6 +22,8 @@ class HomePage extends StatelessWidget {
   final NepaliCalendarController _nepaliCalendarController =
       NepaliCalendarController();
   PageController? _ctrl;
+
+  HomePage({super.key});
   @override
   Widget build(BuildContext context) {
     final NepaliDateTime first = NepaliDateTime(NepaliDateTime.now().year, 1);
@@ -43,7 +45,7 @@ class HomePage extends StatelessWidget {
                     child: Padding(
                       padding: const EdgeInsets.only(top: 5.0),
                       child: Text(
-                        '$_',
+                        _,
                         style:
                             TextStyle(color: (index == 6) ? Colors.red : null),
                       ),
@@ -100,7 +102,7 @@ class HomePage extends StatelessWidget {
   Widget cellBuilder(isToday, isSelected, isDisabled, nepaliDate, label, text,
       calendarStyle, isWeekend) {
     // print(isSelected);
-    Decoration _buildCellDecoration() {
+    Decoration buildCellDecoration() {
       if (isSelected && isToday) {
         return BoxDecoration(
             // shape: BoxShape.circle,
@@ -132,7 +134,7 @@ class HomePage extends StatelessWidget {
     return AnimatedContainer(
       padding: const EdgeInsets.all(3),
       duration: const Duration(milliseconds: 2000),
-      decoration: _buildCellDecoration(),
+      decoration: buildCellDecoration(),
       child: Stack(
         alignment: Alignment.bottomRight,
         children: [
